@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(nextBtn) nextBtn.addEventListener('click', nextSlide);
     if(prevBtn) prevBtn.addEventListener('click', prevSlide);
     
-    let autoRotate = setInterval(nextSlide, 1200);
+    let autoRotate = setInterval(nextSlide, 1500);
     
     if(carousel.parentElement){
       carousel.parentElement.addEventListener('mouseenter', ()=>{
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       carousel.parentElement.addEventListener('mouseleave', ()=>{
         nextSlide(); 
-        autoRotate = setInterval(nextSlide, 1200);
+        autoRotate = setInterval(nextSlide, 1500);
       });
     }
   }
@@ -197,3 +197,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
