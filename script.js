@@ -77,4 +77,70 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1439657506807742556/tYCA49HhvhXKvY5wUR31Kom_hwjIcm6f26gdLnazjfIUYjzTGe5mm4CgESvMzacrurIE';
+  
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.querySelector('.form-status');
+  
+  if(contactForm){
+    contactForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      const embed = {
+        title: '📬 New Contact Form Submission',
+        color: 0x1a237e,
+        fields: [
+          {
+            name: ' Name',
+            value: name,
+            inline: false
+          },
+          {
+            name: ' Email',
+            value: email,
+            inline: false
+          },
+          {
+            name: ' Message',
+            value: message,
+            inline: false
+          }
+        ],
+        footer: {
+          text: 'Sameeha Nepal Portfolio'
+        },
+        timestamp: new Date().toISOString()
+      };
+      
+      try{
+        const response = await fetch(DISCORD_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            username: 'Portfolio Contact',
+            embeds: [embed]
+          })
+        });
+        
+        if(response.ok){
+          formStatus.textContent = '✓ Message sent successfully!';
+          formStatus.className = 'form-status success';
+          contactForm.reset();
+          setTimeout(()=>{
+            formStatus.style.display = 'none';
+          }, 5000);
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch(error){
+        formStatus.textContent = '✗ Failed to send message. Please try again or email directly.';
+        formStatus.className = 'form-status error';
+      }
+    });
+  }
 });

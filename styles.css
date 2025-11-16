@@ -141,6 +141,61 @@ body{
 .contact p{color:var(--grey-dark)}
 .social{padding:8px 12px;border-radius:10px;background:var(--card);text-decoration:none;color:inherit;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
 
+.contact-form{max-width:500px;margin:30px auto 0;}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;margin-bottom:6px;color:var(--navy);font-weight:600}
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:12px;
+  border:2px solid var(--grey-light);
+  border-radius:8px;
+  font-family:inherit;
+  font-size:1rem;
+  transition:border-color 0.3s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:var(--navy);
+}
+.submit-btn{
+  background:var(--navy);
+  color:var(--white);
+  padding:12px 30px;
+  border:none;
+  border-radius:8px;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+.submit-btn:hover{
+  background:var(--navy-light);
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(26,35,126,0.3);
+}
+.submit-btn:active{transform:translateY(0)}
+.form-status{
+  margin-top:15px;
+  padding:10px;
+  border-radius:6px;
+  font-size:0.95rem;
+  display:none;
+}
+.form-status.success{
+  display:block;
+  background:rgba(46,125,50,0.1);
+  color:var(--green);
+  border:1px solid var(--green);
+}
+.form-status.error{
+  display:block;
+  background:rgba(198,40,40,0.1);
+  color:var(--red);
+  border:1px solid var(--red);
+}
+
 .site-footer{padding:18px 0;margin-top:40px;color:var(--grey-dark)}
 .footer-inner{display:flex;justify-content:space-between;align-items:center}
 
