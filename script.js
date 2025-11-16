@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('type-text');
   const cursor = document.getElementById('cursor');
-  const words = ['Sameeha Nepal', 'NERDDDD', 'BOOKWORMMM'];
+  const words = ['Sameeha Nepal', 'a NERDDDD', 'a BOOKWORMMM'];
   const typeSpeed = 90;
   const deleteSpeed = 60;
   const pauseAfter = 1200; 
