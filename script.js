@@ -78,6 +78,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 3D Carousel
+  const carousel = document.getElementById('carousel');
+  const items = document.querySelectorAll('.carousel-item');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  
+  if(carousel && items.length > 0){
+    let currentIndex = 0;
+    const totalItems = items.length;
+    const theta = 360 / totalItems;
+    const radius = Math.round((280 / 2) / Math.tan(Math.PI / totalItems)) + 100;
+    
+    function rotateCarousel(){
+      const angle = theta * currentIndex * -1;
+      carousel.style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
+    }
+    
+    function positionItems(){
+      items.forEach((item, i) => {
+        const cellAngle = theta * i;
+        item.style.transform = `rotateY(${cellAngle}deg) translateZ(${radius}px)`;
+      });
+    }
+    
+    function nextSlide(){
+      currentIndex++;
+      rotateCarousel();
+    }
+    
+    function prevSlide(){
+      currentIndex--;
+      rotateCarousel();
+    }
+    
+    positionItems();
+    rotateCarousel();
+    
+    if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    let autoRotate = setInterval(nextSlide, 1200);
+    
+    if(carousel.parentElement){
+      carousel.parentElement.addEventListener('mouseenter', ()=>{
+        clearInterval(autoRotate);
+      });
+      carousel.parentElement.addEventListener('mouseleave', ()=>{
+        nextSlide(); 
+        autoRotate = setInterval(nextSlide, 1200);
+      });
+    }
+  }
+
   const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1439657506807742556/tYCA49HhvhXKvY5wUR31Kom_hwjIcm6f26gdLnazjfIUYjzTGe5mm4CgESvMzacrurIE';
   
   const contactForm = document.getElementById('contact-form');
