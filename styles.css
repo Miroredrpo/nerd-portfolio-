@@ -189,6 +189,15 @@ body{
   color:var(--green);
   border:1px solid var(--green);
 }
+.ester{
+  display:inline-block;
+  color:var(--grey-dark);
+}
+.ester a{
+  color:inherit;
+  text-decoration:none;
+  transition:color 0.3s ease;
+}
 .form-status.error{
   display:block;
   background:rgba(198,40,40,0.1);
